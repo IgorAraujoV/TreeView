@@ -1,7 +1,5 @@
 #include "treeapp.h"
 #include "ui_treeapp.h"
-#include <QFlag>
-#include <QModelIndex>
 
 TreeApp::TreeApp(QWidget *parent) :
     QDialog(parent),
@@ -45,35 +43,34 @@ void TreeApp::addTreeChildEspecific(QTreeWidgetItem *parent, QTreeWidgetItem *cl
 }
 
 void TreeApp::change(QTreeWidgetItem &current, QTreeWidgetItem &sibling){
-    QTreeWidgetItem itemAux = current;
-
     int childCurrent = current.childCount();
     int childSibling = sibling.childCount();
-    bool test = false;
+
+    QTreeWidgetItem itemAux = current;
+    QTreeWidgetItem *auxCurrent;
+    QTreeWidgetItem *auxSibling;
+
+    current = sibling;
 
     for(int i=0; i<childSibling; i++){
         sibling.child(i)->setText(0,"clone");
-
-        QTreeWidgetItem *auxCurrent = sibling.child(i)->clone();
-
-        current = sibling;
-        addTreeChildEspecific(&current, auxCurrent);
-        sibling.takeChild(i);
-        sibling = itemAux;
-        test=true;
+        auxSibling = sibling.child(i)->clone();
+        addTreeChildEspecific(&current, auxSibling);
     }
+
+    for(int i=0; i<childSibling; i++)
+        sibling.takeChild(i);
 
     for(int i=0; i<childCurrent; i++){
         current.child(i)->setText(0,"clone");
-
-        QTreeWidgetItem *auxSibling = current.child(i)->clone();
-
-        if(!test)
-            current = sibling;
-        addTreeChildEspecific(&sibling, auxSibling);
-        current.takeChild(i);
-        sibling = itemAux;
+        auxCurrent = current.child(i)->clone();
+        addTreeChildEspecific(&sibling, auxCurrent);
     }
+
+    for(int i=0; i<childCurrent; i++)
+        current.takeChild(i);
+
+    sibling = itemAux;
 }
 
 void TreeApp::on_btnAdd_clicked(){
