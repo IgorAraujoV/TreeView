@@ -22,14 +22,19 @@
      <height>211</height>
     </rect>
    </property>
+   <column>
+    <property name="text">
+     <string notr="true">1</string>
+    </property>
+   </column>
   </widget>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>20</y>
+     <y>10</y>
      <width>41</width>
-     <height>112</height>
+     <height>81</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -44,20 +49,6 @@
      <widget class="QPushButton" name="btnRemove">
       <property name="text">
        <string>-</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnUp">
-      <property name="text">
-       <string>Up</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnDown">
-      <property name="text">
-       <string>Down</string>
       </property>
      </widget>
     </item>

@@ -22,15 +22,12 @@ private slots:
 
     void on_btnRemove_clicked();
 
-    void on_btnUp_clicked();
-
 private:
     Ui::TreeApp *ui;
 
     QTreeWidgetItem * addTreeRoot();
-    void change(QTreeWidgetItem &current, QTreeWidgetItem &sibling);
     void addTreeChild(QTreeWidgetItem *parent);
-    void addTreeChildEspecific(QTreeWidgetItem *parent, QTreeWidgetItem *clone);
+
 };
 
 #endif // TREEAPP_H

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>icons/sinal-de-mais_318-54005.jpg</file>
+        <file>icons/icons8-adicionar-filled-50.png</file>
+    </qresource>
+</RCC>
